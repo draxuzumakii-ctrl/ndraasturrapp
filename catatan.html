@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Catatan — NDRAA STURR BIND MANAGER</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="flex items-center gap-3">
+      <button class="btn btn-ghost btn-icon" id="menuToggle" style="display:none;" aria-label="Menu">☰</button>
+      <div class="navbar-brand">
+        <div class="logo-icon">🔮</div>
+        <span class="gradient-text">NDRAA STURR</span>
+      </div>
+    </div>
+    <div class="navbar-actions">
+      <span id="navbarGreeting" style="font-size:0.8rem;color:var(--text-muted);"></span>
+      <div class="navbar-avatar" id="navbarAvatar" title="Profil">N</div>
+    </div>
+  </nav>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <ul class="sidebar-nav">
+      <li><a href="beranda.html"><span class="nav-icon">📊</span> Beranda</a></li>
+      <li><a href="akun.html"><span class="nav-icon">🔐</span> Akun Bind</a></li>
+      <li><a href="catatan.html" class="active"><span class="nav-icon">📝</span> Catatan</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">
+      <a href="#" id="logoutBtn" class="btn btn-secondary w-full" style="justify-content:center;">🚪 Logout</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    <div class="page-header">
+      <h1>📝 Catatan</h1>
+      <p>Kelola pemasukan, pengeluaran, dan transaksi</p>
+    </div>
+
+    <!-- Rekap -->
+    <div class="stats-grid" id="rekapsGrid">
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+    </div>
+
+    <!-- Filter & Actions -->
+    <div class="filter-bar">
+      <select class="glass-select" id="filterKategori">
+        <option value="">Semua Kategori</option>
+        <option value="Penjualan">Penjualan</option>
+        <option value="MC">MC</option>
+        <option value="Jasa Admin">Jasa Admin</option>
+        <option value="Pemasukan">Pemasukan</option>
+        <option value="Pengeluaran">Pengeluaran</option>
+        <option value="Pembelian">Pembelian</option>
+        <option value="Hutang">Hutang</option>
+        <option value="Piutang">Piutang</option>
+        <option value="Lainnya">Lainnya</option>
+      </select>
+      <select class="glass-select" id="filterStatusCatatan">
+        <option value="">Semua Status</option>
+        <option value="Pending">Pending</option>
+        <option value="Proses">Proses</option>
+        <option value="Selesai">Selesai</option>
+        <option value="Dibatalkan">Dibatalkan</option>
+      </select>
+      <button class="btn btn-primary btn-sm" id="addNoteBtn">➕ Tambah Catatan</button>
+      <button class="btn btn-secondary btn-sm" id="exportBtn">📤 Export CSV</button>
+      <button class="btn btn-secondary btn-sm" id="importBtn">📥 Import CSV</button>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h3 style="margin-bottom:12px;">Grafik Bulanan</h3>
+      <canvas id="chartBulanan"></canvas>
+    </div>
+
+    <!-- Notes List -->
+    <div id="notesList" style="display:flex;flex-direction:column;gap:12px;">
+      <div class="skeleton skeleton-card" style="height:100px;"></div>
+      <div class="skeleton skeleton-card" style="height:100px;"></div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state hidden" id="emptyNotes">
+      <div class="empty-icon">📝</div>
+      <h3>Belum ada catatan</h3>
+      <p class="text-muted">Tambahkan catatan keuangan pertama Anda</p>
+      <button class="btn btn-primary mt-3" id="emptyNoteBtn">➕ Tambah Catatan</button>
+    </div>
+  </main>
+
+  <!-- Bottom Nav Mobile -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="beranda.html"><span class="bn-icon">📊</span>Beranda</a>
+      <a href="akun.html"><span class="bn-icon">🔐</span>Akun</a>
+      <a href="catatan.html" class="active"><span class="bn-icon">📝</span>Catatan</a>
+    </div>
+  </nav>
+
+  <!-- Modal Catatan -->
+  <div class="modal-overlay hidden" id="noteModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="noteModalTitle">Tambah Catatan</h2>
+        <button class="modal-close" id="closeNoteModal">✕</button>
+      </div>
+      <div class="modal-body" id="noteFormBody"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+        <button class="btn btn-secondary" id="cancelNoteModal">Batal</button>
+        <button class="btn btn-primary" id="saveNote">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden file input for import -->
+  <input type="file" id="importFileInput" accept=".csv,.json" style="display:none;">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="script.js"></script>
+</body>
+</html
