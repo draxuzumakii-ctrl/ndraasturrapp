@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NDRAA STURR BIND MANAGER — Login</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card" id="loginCard">
+      <!-- Logo -->
+      <div class="login-logo">
+        <div class="logo-circle">🔮</div>
+        <h2 class="gradient-text" style="margin-top:8px;">NDRAA STURR</h2>
+        <p style="color:var(--text-muted);font-size:0.85rem;">BIND MANAGER</p>
+      </div>
+
+      <!-- Form Login -->
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="glass-input" id="loginEmail" placeholder="email@example.com" required autocomplete="email">
+        </div>
+        <div class="form-group password-field">
+          <label>Password</label>
+          <input type="password" class="glass-input" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" class="toggle-pw" data-target="loginPassword">👁️</button>
+        </div>
+        <div class="flex items-center justify-between" style="font-size:0.8rem;">
+          <label class="flex items-center gap-2" style="cursor:pointer;color:var(--text-muted);">
+            <input type="checkbox" id="rememberLogin" style="accent-color:var(--accent);"> Ingat Saya
+          </label>
+          <a href="#" id="showForgot" style="color:var(--neon-purple);text-decoration:none;font-weight:600;">Lupa Password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary w-full" id="loginBtn">Masuk</button>
+      </form>
+
+      <!-- Form Register (hidden default) -->
+      <form class="login-form hidden" id="registerForm">
+        <div class="form-group">
+          <label>Nama</label>
+          <input type="text" class="glass-input" id="regName" placeholder="Nama Anda" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="glass-input" id="regEmail" placeholder="email@example.com" required autocomplete="email">
+        </div>
+        <div class="form-group password-field">
+          <label>Password</label>
+          <input type="password" class="glass-input" id="regPassword" placeholder="Minimal 6 karakter" required minlength="6" autocomplete="new-password">
+          <button type="button" class="toggle-pw" data-target="regPassword">👁️</button>
+        </div>
+        <button type="submit" class="btn btn-primary w-full" id="registerBtn">Daftar</button>
+      </form>
+
+      <!-- Form Lupa Password (hidden default) -->
+      <form class="login-form hidden" id="forgotForm">
+        <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;">Masukkan email untuk reset password.</p>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="glass-input" id="forgotEmail" placeholder="email@example.com" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Kirim Link Reset</button>
+      </form>
+
+      <!-- Footer -->
+      <div class="login-footer" id="loginFooter">
+        <span id="footerText">Belum punya akun?</span>
+        <a href="#" id="toggleForm"> Daftar</a>
+      </div>
+
+      <div class="login-footer hidden" id="regFooter">
+        <span>Sudah punya akun?</span>
+        <a href="#" id="toggleFormBack"> Masuk</a>
+      </div>
+
+      <div class="login-footer hidden" id="forgotFooter">
+        <a href="#" id="backToLogin">← Kembali ke Login</a>
+      </div>
+
+      <!-- Loading -->
+      <div class="text-center hidden mt-3" id="loginLoading">
+        <div class="skeleton skeleton-text" style="width:120px;margin:0 auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <script>
+    // --- Toast Helper ---
+    function showToast(msg, type = 'success') {
+      const bg = type === 'error' ? 'rgba(239,68,68,0.9)' : type === 'warning' ? 'rgba(245,158,11,0.9)' : 'rgba(34,197,94,0.9)';
+      Toastify({
+        text: msg,
+        duration: 3000,
+        gravity: 'top',
+        position: 'center',
+        className: 'glass-toast',
+        style: { background: bg, borderRadius: '16px', padding: '14px 20px', fontWeight: '600' },
+        stopOnFocus: true
+      }).showToast();
+    }
+
+    // --- DOM ---
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const forgotForm = document.getElementById('forgotForm');
+    const loginFooter = document.getElementById('loginFooter');
+    const regFooter = document.getElementById('regFooter');
+    const forgotFooter = document.getElementById('forgotFooter');
+    const loginLoading = document.getElementById('loginLoading');
+
+    // --- Toggle Forms ---
+    document.getElementById('toggleForm').addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('hidden');
+      registerForm.classList.remove('hidden');
+      forgotForm.classList.add('hidden');
+      loginFooter.classList.add('hidden');
+      regFooter.classList.remove('hidden');
+      forgotFooter.classList.add('hidden');
+    });
+
+    document.getElementById('toggleFormBack').addEventListener('click', (e) => {
+      e.preventDefault();
+      registerForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+      forgotForm.classList.add('hidden');
+      regFooter.classList.add('hidden');
+      loginFooter.classList.remove('hidden');
+      forgotFooter.classList.add('hidden');
+    });
+
+    document.getElementById('showForgot').addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('hidden');
+      registerForm.classList.add('hidden');
+      forgotForm.classList.remove('hidden');
+      loginFooter.classList.add('hidden');
+      regFooter.classList.add('hidden');
+      forgotFooter.classList.remove('hidden');
+    });
+
+    document.getElementById('backToLogin').addEventListener('click', (e) => {
+      e.preventDefault();
+      forgotForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+      loginFooter.classList.remove('hidden');
+      forgotFooter.classList.add('hidden');
+    });
+
+    // --- Toggle Password Visibility ---
+    document.querySelectorAll('.toggle-pw').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        input.type = input.type === 'password' ? 'text' : 'password';
+        btn.textContent = input.type === 'password' ? '👁️' : '🙈';
+      });
+    });
+
+    // --- Remember Login ---
+    const rememberCheckbox = document.getElementById('rememberLogin');
+    if (localStorage.getItem('rememberedEmail')) {
+      document.getElementById('loginEmail').value = localStorage.getItem('rememberedEmail');
+      rememberCheckbox.checked = true;
+    }
+
+    // --- Cek apakah sudah login ---
+    auth.onAuthStateChanged((user) => {
+      if (user && window.location.pathname.includes('index.html')) {
+        window.location.href = 'beranda.html';
+      }
+    });
+
+    // --- Login ---
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (rememberCheckbox.checked) {
+        localStorage.setItem('rememberedEmail', email);
+      } else {
+        localStorage.removeItem('rememberedEmail');
+      }
+
+      loginLoading.classList.remove('hidden');
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        showToast('Login berhasil! 🎉');
+        setTimeout(() => { window.location.href = 'beranda.html'; }, 800);
+      } catch (err) {
+        showToast(translateError(err.code), 'error');
+      } finally {
+        loginLoading.classList.add('hidden');
+      }
+    });
+
+    // --- Register ---
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+
+      loginLoading.classList.remove('hidden');
+      try {
+        const cred = await auth.createUserWithEmailAndPassword(email, password);
+        await cred.user.updateProfile({ displayName: name });
+        await db.collection('users').doc(cred.user.uid).set({
+          name: name,
+          email: email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          settings: { darkMode: true, accentColor: '#8b5cf6' }
+        });
+        showToast('Registrasi berhasil! Selamat datang 🎉');
+        setTimeout(() => { window.location.href = 'beranda.html'; }, 800);
+      } catch (err) {
+        showToast(translateError(err.code), 'error');
+      } finally {
+        loginLoading.classList.add('hidden');
+      }
+    });
+
+    // --- Forgot Password ---
+    forgotForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('forgotEmail').value.trim();
+      loginLoading.classList.remove('hidden');
+      try {
+        await auth.sendPasswordResetEmail(email);
+        showToast('Link reset password telah dikirim ke email Anda ✅');
+        forgotForm.reset();
+      } catch (err) {
+        showToast(translateError(err.code), 'error');
+      } finally {
+        loginLoading.classList.add('hidden');
+      }
+    });
+
+    // --- Translate Firebase Error ---
+    function translateError(code) {
+      const map = {
+        'auth/user-not-found': 'Akun tidak ditemukan.',
+        'auth/wrong-password': 'Password salah.',
+        'auth/invalid-email': 'Format email tidak valid.',
+        'auth/email-already-in-use': 'Email sudah terdaftar.',
+        'auth/weak-password': 'Password minimal 6 karakter.',
+        'auth/invalid-credential': 'Email atau password salah.',
+        'auth/too-many-requests': 'Terlalu banyak percobaan. Coba lagi nanti.',
+        'auth/network-request-failed': 'Gagal koneksi. Periksa internet Anda.'
+      };
+      return map[code] || 'Terjadi kesalahan. Coba lagi.';
+    }
+  </script>
+</body>
+</html>
