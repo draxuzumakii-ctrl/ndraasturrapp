@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pengaturan — NDRAA STURR BIND MANAGER</title>
+<meta name="theme-color" content="#08060F">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body data-page="app">
+<div class="nebula"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">NS</div>
+      <div class="brand-text"><div class="b1">NDRAA STURR</div><div class="b2">Bind Manager</div></div>
+      <button class="collapse-btn"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    </div>
+    <nav>
+      <div class="nav-group-label">Menu</div>
+      <a href="beranda.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><span class="nav-label">Beranda</span></a>
+      <a href="akun.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 9h20"/></svg><span class="nav-label">Akun</span></a>
+      <a href="catatan.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2z"/><path d="M13 2v5h5M9 13h6M9 17h4"/></svg><span class="nav-label">Catatan</span></a>
+      <div class="nav-group-label">Akun Saya</div>
+      <a href="pengaturan.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span class="nav-label">Pengaturan</span></a>
+      <a href="#" class="nav-item" data-action="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg><span class="nav-label">Logout</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="avatar" data-user-initial>U</div>
+      <div class="sidebar-footer-text"><div class="u1" data-user-name>User</div><div class="u2" data-user-email>-</div></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div style="flex:1;min-width:0;"><h1>Pengaturan</h1><div class="topbar-sub">Kelola profil dan preferensi tampilan</div></div>
+    </header>
+
+    <main class="content" style="max-width:640px;">
+
+      <!-- PROFILE -->
+      <div class="card" style="padding:22px;margin-bottom:20px;">
+        <div class="section-head" style="margin-bottom:18px;"><div><h2 style="font-size:15px;">Profil</h2></div></div>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <div class="avatar" style="width:64px;height:64px;font-size:22px;" data-user-initial>U</div>
+          <div>
+            <div style="font-weight:600;" data-user-name>User</div>
+            <div style="font-size:12.5px;color:var(--text-faint);" data-user-email>-</div>
+          </div>
+        </div>
+        <form id="profile-form">
+          <div class="field"><label>Nama</label><input type="text" class="input" id="f-display-name" placeholder="Nama kamu"></div>
+          <button type="submit" class="btn btn-primary btn-sm" id="btn-save-profile">Simpan Nama</button>
+        </form>
+      </div>
+
+      <!-- APPEARANCE -->
+      <div class="card" style="padding:22px;margin-bottom:20px;">
+        <div class="section-head" style="margin-bottom:18px;"><div><h2 style="font-size:15px;">Tampilan</h2></div></div>
+        <div class="field">
+          <label>Mode Tampilan</label>
+          <div style="display:flex;gap:10px;">
+            <button type="button" class="btn btn-glass" id="btn-dark-mode" style="flex:1;">🌙 Dark Mode</button>
+            <button type="button" class="btn btn-glass" id="btn-light-mode" style="flex:1;">☀️ Light Mode</button>
+          </div>
+          <p style="font-size:11.5px;color:var(--text-faint);margin-top:8px;">Light mode menggunakan skema warna terang untuk kondisi ruangan cerah.</p>
+        </div>
+        <div class="field">
+          <label>Accent Color</label>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="accent-dot" data-accent="#7B5CFF" style="background:#7B5CFF" title="Violet"></button>
+            <button class="accent-dot" data-accent="#3E8EFF" style="background:#3E8EFF" title="Blue"></button>
+            <button class="accent-dot" data-accent="#00E5A0" style="background:#00E5A0" title="Green"></button>
+            <button class="accent-dot" data-accent="#FF8A4C" style="background:#FF8A4C" title="Orange"></button>
+            <button class="accent-dot" data-accent="#FF5C7A" style="background:#FF5C7A" title="Pink"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY -->
+      <div class="card" style="padding:22px;margin-bottom:20px;">
+        <div class="section-head" style="margin-bottom:18px;"><div><h2 style="font-size:15px;">Keamanan</h2></div></div>
+        <form id="password-form">
+          <div class="field"><label>Password Baru</label>
+            <div class="password-wrap"><input type="password" class="input" id="f-new-password" placeholder="Minimal 6 karakter" minlength="6" required>
+            <button type="button" class="password-toggle" data-toggle="f-new-password"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+          </div>
+          <p style="font-size:11.5px;color:var(--text-faint);margin:-6px 0 14px;">Demi keamanan, kamu mungkin diminta login ulang setelah mengganti password.</p>
+          <button type="submit" class="btn btn-primary btn-sm" id="btn-save-password">Ganti Password</button>
+        </form>
+      </div>
+
+      <!-- BACKUP -->
+      <div class="card" style="padding:22px;">
+        <div class="section-head" style="margin-bottom:18px;"><div><h2 style="font-size:15px;">Backup & Restore</h2></div></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-glass" id="btn-backup">Backup Semua Data</button>
+          <label class="btn btn-glass" style="cursor:pointer;">Restore dari File<input type="file" id="restore-file" accept=".json" style="display:none;"></label>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="beranda.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Beranda</a>
+  <a href="akun.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/></svg>Akun</a>
+  <a href="catatan.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>Catatan</a>
+  <a href="pengaturan.html" class="bnav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Setting</a>
+  <a href="#" class="bnav-item" data-action="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Logout</a>
+</nav>
+
+<style>
+.accent-dot{ width:36px;height:36px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s; }
+.accent-dot.active{ border-color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.15); }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+<script type="module">
+import { updateProfile, updatePassword } from './firebase.js';
+
+let N;
+document.addEventListener('ndraa:ready', ({ detail }) => {
+  N = window.NDRAA;
+  document.getElementById('f-display-name').value = detail.user.displayName || '';
+  applyTheme(localStorage.getItem('ndraa_theme') || 'dark');
+  applyAccent(localStorage.getItem('ndraa_accent') || '#7B5CFF');
+});
+
+document.getElementById('profile-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('btn-save-profile');
+  btn.disabled = true; btn.textContent = 'Menyimpan...';
+  try{
+    await updateProfile(N.user, { displayName: document.getElementById('f-display-name').value.trim() });
+    N.toast('Nama berhasil diperbarui', 'success');
+    document.querySelectorAll('[data-user-name]').forEach(el => el.textContent = document.getElementById('f-display-name').value.trim());
+  }catch(err){ N.toast('Gagal memperbarui nama', 'error'); }
+  finally{ btn.disabled = false; btn.textContent = 'Simpan Nama'; }
+});
+
+document.getElementById('password-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('btn-save-password');
+  btn.disabled = true; btn.textContent = 'Menyimpan...';
+  try{
+    await updatePassword(N.user, document.getElementById('f-new-password').value);
+    N.toast('Password berhasil diubah', 'success');
+    e.target.reset();
+  }catch(err){
+    if (err.code === 'auth/requires-recent-login'){
+      N.toast('Silakan logout dan login kembali sebelum mengganti password', 'error');
+    } else {
+      N.toast('Gagal mengubah password', 'error');
+    }
+  }finally{ btn.disabled = false; btn.textContent = 'Ganti Password'; }
+});
+
+document.querySelectorAll('.password-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = document.getElementById(btn.dataset.toggle);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  });
+});
+
+function applyTheme(mode){
+  document.documentElement.dataset.theme = mode;
+  localStorage.setItem('ndraa_theme', mode);
+  document.getElementById('btn-dark-mode').classList.toggle('btn-primary', mode==='dark');
+  document.getElementById('btn-dark-mode').classList.toggle('btn-glass', mode!=='dark');
+  document.getElementById('btn-light-mode').classList.toggle('btn-primary', mode==='light');
+  document.getElementById('btn-light-mode').classList.toggle('btn-glass', mode!=='light');
+  if (mode === 'light'){
+    N?.toast('Light mode akan segera hadir — tetap menggunakan Dark Mode untuk saat ini', 'default');
+  }
+}
+document.getElementById('btn-dark-mode').addEventListener('click', () => applyTheme('dark'));
+document.getElementById('btn-light-mode').addEventListener('click', () => applyTheme('light'));
+
+function applyAccent(hex){
+  document.documentElement.style.setProperty('--violet', hex);
+  localStorage.setItem('ndraa_accent', hex);
+  document.querySelectorAll('.accent-dot').forEach(d => d.classList.toggle('active', d.dataset.accent === hex));
+}
+document.querySelectorAll('.accent-dot').forEach(dot => {
+  dot.addEventListener('click', () => applyAccent(dot.dataset.accent));
+});
+
+document.getElementById('btn-backup').addEventListener('click', () => N.fullBackup());
+document.getElementById('restore-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  try{ await N.restoreBackup(file); }catch(err){ N.toast('Gagal restore: file tidak valid', 'error'); }
+  e.target.value = '';
+});
+</script>
+</body>
+</html>
