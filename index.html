@@ -1,272 +1,202 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>NDRAA STURR BIND MANAGER — Login</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
-  <meta name="theme-color" content="#0a0a0f">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NDRAA STURR BIND MANAGER — Masuk</title>
+<meta name="theme-color" content="#08060F">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
-<body>
-  <div class="login-page">
-    <div class="login-card" id="loginCard">
-      <!-- Logo -->
-      <div class="login-logo">
-        <div class="logo-circle">🔮</div>
-        <h2 class="gradient-text" style="margin-top:8px;">NDRAA STURR</h2>
-        <p style="color:var(--text-muted);font-size:0.85rem;">BIND MANAGER</p>
-      </div>
+<body data-page="auth">
+<div class="nebula"></div>
 
-      <!-- Form Login -->
-      <form class="login-form" id="loginForm">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="glass-input" id="loginEmail" placeholder="email@example.com" required autocomplete="email">
-        </div>
-        <div class="form-group password-field">
-          <label>Password</label>
-          <input type="password" class="glass-input" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
-          <button type="button" class="toggle-pw" data-target="loginPassword">👁️</button>
-        </div>
-        <div class="flex items-center justify-between" style="font-size:0.8rem;">
-          <label class="flex items-center gap-2" style="cursor:pointer;color:var(--text-muted);">
-            <input type="checkbox" id="rememberLogin" style="accent-color:var(--accent);"> Ingat Saya
-          </label>
-          <a href="#" id="showForgot" style="color:var(--neon-purple);text-decoration:none;font-weight:600;">Lupa Password?</a>
-        </div>
-        <button type="submit" class="btn btn-primary w-full" id="loginBtn">Masuk</button>
-      </form>
+<div class="auth-wrap">
+  <div class="auth-card card fade-in">
 
-      <!-- Form Register (hidden default) -->
-      <form class="login-form hidden" id="registerForm">
-        <div class="form-group">
-          <label>Nama</label>
-          <input type="text" class="glass-input" id="regName" placeholder="Nama Anda" required>
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="glass-input" id="regEmail" placeholder="email@example.com" required autocomplete="email">
-        </div>
-        <div class="form-group password-field">
-          <label>Password</label>
-          <input type="password" class="glass-input" id="regPassword" placeholder="Minimal 6 karakter" required minlength="6" autocomplete="new-password">
-          <button type="button" class="toggle-pw" data-target="regPassword">👁️</button>
-        </div>
-        <button type="submit" class="btn btn-primary w-full" id="registerBtn">Daftar</button>
-      </form>
-
-      <!-- Form Lupa Password (hidden default) -->
-      <form class="login-form hidden" id="forgotForm">
-        <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;">Masukkan email untuk reset password.</p>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="glass-input" id="forgotEmail" placeholder="email@example.com" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-full">Kirim Link Reset</button>
-      </form>
-
-      <!-- Footer -->
-      <div class="login-footer" id="loginFooter">
-        <span id="footerText">Belum punya akun?</span>
-        <a href="#" id="toggleForm"> Daftar</a>
-      </div>
-
-      <div class="login-footer hidden" id="regFooter">
-        <span>Sudah punya akun?</span>
-        <a href="#" id="toggleFormBack"> Masuk</a>
-      </div>
-
-      <div class="login-footer hidden" id="forgotFooter">
-        <a href="#" id="backToLogin">← Kembali ke Login</a>
-      </div>
-
-      <!-- Loading -->
-      <div class="text-center hidden mt-3" id="loginLoading">
-        <div class="skeleton skeleton-text" style="width:120px;margin:0 auto;"></div>
-      </div>
+    <div class="auth-logo">
+      <div class="brand-mark">NS</div>
+      <div class="auth-title">NDRAA STURR</div>
+      <div class="auth-sub">Bind Manager · masuk untuk melanjutkan</div>
     </div>
+
+    <!-- LOGIN FORM -->
+    <form id="form-login">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" class="input" id="login-email" placeholder="nama@email.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="password-wrap">
+          <input type="password" class="input" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" class="password-toggle" data-toggle="login-password">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+        <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text-dim);cursor:pointer;">
+          <input type="checkbox" id="remember-me" checked style="accent-color:var(--violet);width:15px;height:15px;">
+          Ingat saya
+        </label>
+        <a href="#" id="link-forgot" style="font-size:12.5px;color:var(--violet-soft);font-weight:600;">Lupa password?</a>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;" id="btn-login">
+        <span class="btn-text">Masuk</span>
+      </button>
+      <div class="auth-switch">Belum punya akun? <a href="#" id="link-register">Daftar sekarang</a></div>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="form-register" style="display:none;">
+      <div class="field">
+        <label>Nama</label>
+        <input type="text" class="input" id="reg-name" placeholder="Nama kamu" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" class="input" id="reg-email" placeholder="nama@email.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="password-wrap">
+          <input type="password" class="input" id="reg-password" placeholder="Minimal 6 karakter" required autocomplete="new-password" minlength="6">
+          <button type="button" class="password-toggle" data-toggle="reg-password">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px;" id="btn-register">
+        <span class="btn-text">Buat Akun</span>
+      </button>
+      <div class="auth-switch">Sudah punya akun? <a href="#" id="link-login">Masuk</a></div>
+    </form>
+
+    <!-- FORGOT PASSWORD FORM -->
+    <form id="form-forgot" style="display:none;">
+      <p style="font-size:12.5px;color:var(--text-faint);margin:0 0 16px;">Masukkan email akunmu, kami akan kirim tautan reset password.</p>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" class="input" id="forgot-email" placeholder="nama@email.com" required autocomplete="email">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;" id="btn-forgot">
+        <span class="btn-text">Kirim Tautan Reset</span>
+      </button>
+      <div class="auth-switch"><a href="#" id="link-back-login">← Kembali ke login</a></div>
+    </form>
+
   </div>
+</div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="firebase.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
-  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script type="module">
+import {
+  auth, setPersistence, browserLocalPersistence, browserSessionPersistence,
+  signInWithEmailAndPassword, createUserWithEmailAndPassword,
+  sendPasswordResetEmail, updateProfile, onAuthStateChanged
+} from './firebase.js';
 
-  <script>
-    // --- Toast Helper ---
-    function showToast(msg, type = 'success') {
-      const bg = type === 'error' ? 'rgba(239,68,68,0.9)' : type === 'warning' ? 'rgba(245,158,11,0.9)' : 'rgba(34,197,94,0.9)';
-      Toastify({
-        text: msg,
-        duration: 3000,
-        gravity: 'top',
-        position: 'center',
-        className: 'glass-toast',
-        style: { background: bg, borderRadius: '16px', padding: '14px 20px', fontWeight: '600' },
-        stopOnFocus: true
-      }).showToast();
-    }
+const forms = {
+  login: document.getElementById('form-login'),
+  register: document.getElementById('form-register'),
+  forgot: document.getElementById('form-forgot')
+};
+function showForm(name){
+  Object.values(forms).forEach(f => f.style.display = 'none');
+  forms[name].style.display = 'block';
+  forms[name].classList.add('fade-in');
+}
+document.getElementById('link-register').addEventListener('click', e => { e.preventDefault(); showForm('register'); });
+document.getElementById('link-login').addEventListener('click', e => { e.preventDefault(); showForm('login'); });
+document.getElementById('link-forgot').addEventListener('click', e => { e.preventDefault(); showForm('forgot'); });
+document.getElementById('link-back-login').addEventListener('click', e => { e.preventDefault(); showForm('login'); });
 
-    // --- DOM ---
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const forgotForm = document.getElementById('forgotForm');
-    const loginFooter = document.getElementById('loginFooter');
-    const regFooter = document.getElementById('regFooter');
-    const forgotFooter = document.getElementById('forgotFooter');
-    const loginLoading = document.getElementById('loginLoading');
+document.querySelectorAll('.password-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = document.getElementById(btn.dataset.toggle);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  });
+});
 
-    // --- Toggle Forms ---
-    document.getElementById('toggleForm').addEventListener('click', (e) => {
-      e.preventDefault();
-      loginForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
-      forgotForm.classList.add('hidden');
-      loginFooter.classList.add('hidden');
-      regFooter.classList.remove('hidden');
-      forgotFooter.classList.add('hidden');
-    });
+function toast(msg, type){
+  const colors = { success:'linear-gradient(135deg,#00E5A0,#3E8EFF)', error:'linear-gradient(135deg,#FF5C7A,#FF8A4C)', default:'linear-gradient(135deg,#7B5CFF,#3E8EFF)' };
+  Toastify({ text: msg, duration: 3000, gravity:'top', position:'right', style:{ background: colors[type] || colors.default } }).showToast();
+}
+function setLoading(btnId, loading, textLoading, textDefault){
+  const btn = document.getElementById(btnId);
+  btn.disabled = loading;
+  btn.querySelector('.btn-text').textContent = loading ? textLoading : textDefault;
+}
+function friendlyError(err){
+  const map = {
+    'auth/invalid-email': 'Format email tidak valid.',
+    'auth/user-not-found': 'Akun dengan email ini tidak ditemukan.',
+    'auth/wrong-password': 'Password salah.',
+    'auth/invalid-credential': 'Email atau password salah.',
+    'auth/email-already-in-use': 'Email sudah terdaftar.',
+    'auth/weak-password': 'Password minimal 6 karakter.',
+    'auth/too-many-requests': 'Terlalu banyak percobaan. Coba lagi nanti.'
+  };
+  return map[err.code] || 'Terjadi kesalahan. Coba lagi.';
+}
 
-    document.getElementById('toggleFormBack').addEventListener('click', (e) => {
-      e.preventDefault();
-      registerForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
-      forgotForm.classList.add('hidden');
-      regFooter.classList.add('hidden');
-      loginFooter.classList.remove('hidden');
-      forgotFooter.classList.add('hidden');
-    });
+forms.login.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const remember = document.getElementById('remember-me').checked;
+  setLoading('btn-login', true, 'Memproses...', 'Masuk');
+  try{
+    await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+    await signInWithEmailAndPassword(auth, email, password);
+    toast('Berhasil masuk!', 'success');
+  }catch(err){
+    toast(friendlyError(err), 'error');
+  }finally{
+    setLoading('btn-login', false, 'Memproses...', 'Masuk');
+  }
+});
 
-    document.getElementById('showForgot').addEventListener('click', (e) => {
-      e.preventDefault();
-      loginForm.classList.add('hidden');
-      registerForm.classList.add('hidden');
-      forgotForm.classList.remove('hidden');
-      loginFooter.classList.add('hidden');
-      regFooter.classList.add('hidden');
-      forgotFooter.classList.remove('hidden');
-    });
+forms.register.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const password = document.getElementById('reg-password').value;
+  setLoading('btn-register', true, 'Membuat akun...', 'Buat Akun');
+  try{
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(cred.user, { displayName: name });
+    toast('Akun berhasil dibuat!', 'success');
+  }catch(err){
+    toast(friendlyError(err), 'error');
+  }finally{
+    setLoading('btn-register', false, 'Membuat akun...', 'Buat Akun');
+  }
+});
 
-    document.getElementById('backToLogin').addEventListener('click', (e) => {
-      e.preventDefault();
-      forgotForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
-      loginFooter.classList.remove('hidden');
-      forgotFooter.classList.add('hidden');
-    });
+forms.forgot.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('forgot-email').value.trim();
+  setLoading('btn-forgot', true, 'Mengirim...', 'Kirim Tautan Reset');
+  try{
+    await sendPasswordResetEmail(auth, email);
+    toast('Tautan reset password telah dikirim ke email kamu.', 'success');
+    showForm('login');
+  }catch(err){
+    toast(friendlyError(err), 'error');
+  }finally{
+    setLoading('btn-forgot', false, 'Mengirim...', 'Kirim Tautan Reset');
+  }
+});
 
-    // --- Toggle Password Visibility ---
-    document.querySelectorAll('.toggle-pw').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const input = document.getElementById(btn.dataset.target);
-        input.type = input.type === 'password' ? 'text' : 'password';
-        btn.textContent = input.type === 'password' ? '👁️' : '🙈';
-      });
-    });
-
-    // --- Remember Login ---
-    const rememberCheckbox = document.getElementById('rememberLogin');
-    if (localStorage.getItem('rememberedEmail')) {
-      document.getElementById('loginEmail').value = localStorage.getItem('rememberedEmail');
-      rememberCheckbox.checked = true;
-    }
-
-    // --- Cek apakah sudah login ---
-    auth.onAuthStateChanged((user) => {
-      if (user && window.location.pathname.includes('index.html')) {
-        window.location.href = 'beranda.html';
-      }
-    });
-
-    // --- Login ---
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value;
-
-      if (rememberCheckbox.checked) {
-        localStorage.setItem('rememberedEmail', email);
-      } else {
-        localStorage.removeItem('rememberedEmail');
-      }
-
-      loginLoading.classList.remove('hidden');
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        showToast('Login berhasil! 🎉');
-        setTimeout(() => { window.location.href = 'beranda.html'; }, 800);
-      } catch (err) {
-        showToast(translateError(err.code), 'error');
-      } finally {
-        loginLoading.classList.add('hidden');
-      }
-    });
-
-    // --- Register ---
-    registerForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('regName').value.trim();
-      const email = document.getElementById('regEmail').value.trim();
-      const password = document.getElementById('regPassword').value;
-
-      loginLoading.classList.remove('hidden');
-      try {
-        const cred = await auth.createUserWithEmailAndPassword(email, password);
-        await cred.user.updateProfile({ displayName: name });
-        await db.collection('users').doc(cred.user.uid).set({
-          name: name,
-          email: email,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          settings: { darkMode: true, accentColor: '#8b5cf6' }
-        });
-        showToast('Registrasi berhasil! Selamat datang 🎉');
-        setTimeout(() => { window.location.href = 'beranda.html'; }, 800);
-      } catch (err) {
-        showToast(translateError(err.code), 'error');
-      } finally {
-        loginLoading.classList.add('hidden');
-      }
-    });
-
-    // --- Forgot Password ---
-    forgotForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('forgotEmail').value.trim();
-      loginLoading.classList.remove('hidden');
-      try {
-        await auth.sendPasswordResetEmail(email);
-        showToast('Link reset password telah dikirim ke email Anda ✅');
-        forgotForm.reset();
-      } catch (err) {
-        showToast(translateError(err.code), 'error');
-      } finally {
-        loginLoading.classList.add('hidden');
-      }
-    });
-
-    // --- Translate Firebase Error ---
-    function translateError(code) {
-      const map = {
-        'auth/user-not-found': 'Akun tidak ditemukan.',
-        'auth/wrong-password': 'Password salah.',
-        'auth/invalid-email': 'Format email tidak valid.',
-        'auth/email-already-in-use': 'Email sudah terdaftar.',
-        'auth/weak-password': 'Password minimal 6 karakter.',
-        'auth/invalid-credential': 'Email atau password salah.',
-        'auth/too-many-requests': 'Terlalu banyak percobaan. Coba lagi nanti.',
-        'auth/network-request-failed': 'Gagal koneksi. Periksa internet Anda.'
-      };
-      return map[code] || 'Terjadi kesalahan. Coba lagi.';
-    }
-  </script>
+// Redirect if already logged in
+onAuthStateChanged(auth, (user) => {
+  if (user) window.location.href = 'beranda.html';
+});
+</script>
 </body>
 </html>
