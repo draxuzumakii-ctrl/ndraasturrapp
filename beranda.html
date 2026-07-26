@@ -1,112 +1,285 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Beranda — NDRAA STURR BIND MANAGER</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
-  <meta name="theme-color" content="#0a0a0f">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Beranda — NDRAA STURR BIND MANAGER</title>
+<meta name="theme-color" content="#08060F">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
-<body>
+<body data-page="app">
+<div class="nebula"></div>
+<div class="app-shell">
 
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="flex items-center gap-3">
-      <button class="btn btn-ghost btn-icon" id="menuToggle" style="display:none;" aria-label="Menu">☰</button>
-      <div class="navbar-brand">
-        <div class="logo-icon">🔮</div>
-        <span class="gradient-text">NDRAA STURR</span>
-      </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">NS</div>
+      <div class="brand-text"><div class="b1">NDRAA STURR</div><div class="b2">Bind Manager</div></div>
+      <button class="collapse-btn"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
     </div>
-    <div class="navbar-actions">
-      <span id="navbarGreeting" style="font-size:0.8rem;color:var(--text-muted);"></span>
-      <div class="navbar-avatar" id="navbarAvatar" title="Profil">N</div>
-    </div>
-  </nav>
-
-  <!-- Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <ul class="sidebar-nav">
-      <li><a href="beranda.html" class="active"><span class="nav-icon">📊</span> Beranda</a></li>
-      <li><a href="akun.html"><span class="nav-icon">🔐</span> Akun Bind</a></li>
-      <li><a href="catatan.html"><span class="nav-icon">📝</span> Catatan</a></li>
-    </ul>
-    <div class="sidebar-divider"></div>
+    <nav>
+      <div class="nav-group-label">Menu</div>
+      <a href="beranda.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><span class="nav-label">Beranda</span></a>
+      <a href="akun.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 9h20"/></svg><span class="nav-label">Akun</span></a>
+      <a href="catatan.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2z"/><path d="M13 2v5h5M9 13h6M9 17h4"/></svg><span class="nav-label">Catatan</span></a>
+      <div class="nav-group-label">Akun Saya</div>
+      <a href="pengaturan.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span class="nav-label">Pengaturan</span></a>
+      <a href="#" class="nav-item" data-action="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg><span class="nav-label">Logout</span></a>
+    </nav>
     <div class="sidebar-footer">
-      <a href="#" id="logoutBtn" class="btn btn-secondary w-full" style="justify-content:center;">🚪 Logout</a>
+      <div class="avatar" data-user-initial>U</div>
+      <div class="sidebar-footer-text">
+        <div class="u1" data-user-name>User</div>
+        <div class="u2" data-user-email>-</div>
+      </div>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="main-content" id="mainContent">
-    <div class="page-header">
-      <h1>📊 Beranda</h1>
-      <p>Ringkasan bind manager Anda</p>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-      <button class="btn btn-primary btn-sm" onclick="window.location.href='akun.html?action=add'">➕ Tambah Akun</button>
-      <button class="btn btn-secondary btn-sm" onclick="window.location.href='catatan.html?action=add'">📝 Tambah Catatan</button>
-      <button class="btn btn-secondary btn-sm" id="backupBtn">💾 Backup</button>
-      <button class="btn btn-secondary btn-sm" id="refreshBtn">🔄 Refresh</button>
-    </div>
-
-    <!-- Stats Grid -->
-    <div class="stats-grid" id="statsGrid">
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-    </div>
-
-    <!-- Charts -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="charts-wrapper">
-      <div class="chart-container">
-        <h3 style="margin-bottom:12px;">Akun per Game</h3>
-        <canvas id="chartGame"></canvas>
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div style="flex:1;min-width:0;">
+        <h1>Beranda</h1>
+        <div class="topbar-sub" id="today-label">-</div>
       </div>
-      <div class="chart-container">
-        <h3 style="margin-bottom:12px;">Profit Bulanan</h3>
-        <canvas id="chartProfit"></canvas>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Cari akun, gmail, UID..." id="global-search">
       </div>
-    </div>
+      <button class="icon-btn" id="btn-refresh" title="Refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></button>
+    </header>
 
-    <!-- Countdown Terdekat -->
-    <div class="chart-container mt-4">
-      <h3 style="margin-bottom:16px;">⏳ Countdown Terdekat</h3>
-      <div id="upcomingCountdowns" style="display:flex;flex-wrap:wrap;gap:12px;">
-        <p class="text-muted">Memuat data...</p>
+    <main class="content">
+
+      <!-- STAT CARDS -->
+      <div class="section-head">
+        <div><h2>Ringkasan</h2><p>Statistik seluruh akun bind kamu</p></div>
       </div>
-    </div>
-  </main>
+      <div class="stat-grid" id="stat-grid">
+        <!-- populated by JS -->
+      </div>
 
-  <!-- Bottom Nav Mobile -->
-  <nav class="bottom-nav">
-    <div class="bottom-nav-inner">
-      <a href="beranda.html" class="active"><span class="bn-icon">📊</span>Beranda</a>
-      <a href="akun.html"><span class="bn-icon">🔐</span>Akun</a>
-      <a href="catatan.html"><span class="bn-icon">📝</span>Catatan</a>
-    </div>
-  </nav>
+      <!-- CHARTS -->
+      <div class="section-head" style="margin-top:28px;">
+        <div><h2>Grafik</h2><p>Distribusi akun dan performa keuangan</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+        <div class="card chart-card">
+          <div class="chart-head"><h3>Akun per Game</h3></div>
+          <div class="chart-wrap"><canvas id="chart-games"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-head"><h3>Profit Bulanan</h3></div>
+          <div class="chart-wrap"><canvas id="chart-profit"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-head"><h3>Penjualan Bulanan</h3></div>
+          <div class="chart-wrap"><canvas id="chart-sales"></canvas></div>
+        </div>
+      </div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="firebase.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
-  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script src="script.js"></script>
+      <!-- QUICK ACTIONS -->
+      <div class="section-head" style="margin-top:28px;">
+        <div><h2>Aksi Cepat</h2><p>Hal yang sering kamu lakukan</p></div>
+      </div>
+      <div class="quick-actions">
+        <div class="card qa-btn" id="qa-add-account">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="qa-title">Tambah Akun</div>
+          <div class="qa-sub">Daftarkan akun bind baru</div>
+        </div>
+        <div class="card qa-btn" id="qa-add-note">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg></div>
+          <div class="qa-title">Tambah Catatan</div>
+          <div class="qa-sub">Catat transaksi keuangan</div>
+        </div>
+        <div class="card qa-btn" id="qa-backup">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+          <div class="qa-title">Backup</div>
+          <div class="qa-sub">Unduh semua data</div>
+        </div>
+        <div class="card qa-btn" id="qa-refresh">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
+          <div class="qa-title">Refresh</div>
+          <div class="qa-sub">Muat ulang data terbaru</div>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN TERDEKAT -->
+      <div class="section-head" style="margin-top:28px;">
+        <div><h2>Countdown Terdekat</h2><p>Akun yang paling cepat siap unbind</p></div>
+        <a href="akun.html" class="btn btn-glass btn-sm">Lihat Semua</a>
+      </div>
+      <div class="acc-grid" id="upcoming-grid"></div>
+
+    </main>
+  </div>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <a href="beranda.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Beranda</a>
+  <a href="akun.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/></svg>Akun</a>
+  <a href="#" class="bnav-fab" id="fab-add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></a>
+  <a href="catatan.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H9a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>Catatan</a>
+  <a href="pengaturan.html" class="bnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Setting</a>
+  <a href="#" class="bnav-item" data-action="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Logout</a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+<script type="module">
+document.getElementById('today-label').textContent = new Date().toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+
+document.getElementById('qa-add-account').addEventListener('click', () => location.href = 'akun.html?new=1');
+document.getElementById('qa-add-note').addEventListener('click', () => location.href = 'catatan.html?new=1');
+document.getElementById('fab-add').addEventListener('click', (e) => { e.preventDefault(); location.href = 'akun.html?new=1'; });
+document.getElementById('qa-backup').addEventListener('click', () => window.NDRAA.fullBackup());
+document.getElementById('qa-refresh').addEventListener('click', () => location.reload());
+document.getElementById('btn-refresh').addEventListener('click', () => location.reload());
+
+document.getElementById('global-search').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') location.href = 'akun.html?q=' + encodeURIComponent(e.target.value);
+});
+
+let chartGames, chartProfit, chartSales;
+
+function renderStats(accounts, tx){
+  const N = window.NDRAA;
+  const total = accounts.length;
+  const withCountdown = accounts.map(a => {
+    const unbind = N.computeUnbindDate(a.tanggalBind, a.durasiHari);
+    return { ...a, remaining: N.daysRemaining(unbind), unbind };
+  });
+  const ready = withCountdown.filter(a => a.remaining <= 0).length;
+  const stillBind = total - ready;
+  const nearest = withCountdown.filter(a => a.remaining > 0).sort((a,b) => a.remaining - b.remaining)[0];
+
+  const countByGame = (g) => accounts.filter(a => a.game === g).length;
+  const totalPenjualan = tx.filter(t => t.kategori === 'Penjualan' && t.status === 'Selesai').reduce((s,t) => s + Number(t.nominal||0), 0);
+  const totalMC = tx.filter(t => t.kategori === 'MC' && t.status === 'Selesai').reduce((s,t) => s + Number(t.nominal||0), 0);
+  const totalJasa = tx.filter(t => t.kategori === 'Jasa Admin' && t.status === 'Selesai').reduce((s,t) => s + Number(t.nominal||0), 0);
+  const totalMasuk = tx.filter(t => t.kategori === 'Pemasukan' && t.status === 'Selesai').reduce((s,t) => s + Number(t.nominal||0), 0);
+  const totalKeluar = tx.filter(t => ['Pengeluaran','Pembelian'].includes(t.kategori) && t.status === 'Selesai').reduce((s,t) => s + Number(t.nominal||0), 0);
+  const totalProfit = totalPenjualan + totalMC + totalJasa + totalMasuk - totalKeluar;
+
+  const cards = [
+    { label:'Total Akun', value: total, icon:'grid' },
+    { label:'Ready Unbind', value: ready, icon:'check' },
+    { label:'Masih Bind', value: stillBind, icon:'lock' },
+    { label:'Countdown Terdekat', value: nearest ? `${nearest.remaining}h` : '-', icon:'clock' },
+    { label:'Total Free Fire', value: countByGame('Free Fire'), icon:'game' },
+    { label:'Total MLBB', value: countByGame('MLBB'), icon:'game' },
+    { label:'Total PUBG', value: countByGame('PUBG'), icon:'game' },
+    { label:'Total Roblox', value: countByGame('Roblox'), icon:'game' },
+    { label:'Total Penjualan', value: N.formatRupiah(totalPenjualan), icon:'cash' },
+    { label:'Total MC', value: N.formatRupiah(totalMC), icon:'cash' },
+    { label:'Total Jasa Admin', value: N.formatRupiah(totalJasa), icon:'cash' },
+    { label:'Total Profit', value: N.formatRupiah(totalProfit), icon:'trend' }
+  ];
+  const icons = {
+    grid:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
+    check:'<path d="M20 6L9 17l-5-5"/>',
+    lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+    game:'<rect x="2" y="7" width="20" height="10" rx="4"/><path d="M8 10v4M6 12h4"/><circle cx="16" cy="10.5" r="1"/><circle cx="18" cy="13" r="1"/>',
+    cash:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/>',
+    trend:'<path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>'
+  };
+  document.getElementById('stat-grid').innerHTML = cards.map(c => `
+    <div class="card stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${icons[c.icon]}</svg></div>
+      <div class="stat-value">${c.value}</div>
+      <div class="stat-label">${c.label}</div>
+    </div>`).join('');
+
+  // Upcoming countdown grid (top 3 nearest not-yet-ready)
+  const upcoming = withCountdown.filter(a => a.remaining > 0).sort((a,b) => a.remaining - b.remaining).slice(0,3)
+    .concat(withCountdown.filter(a => a.remaining <= 0).slice(0,3 - Math.min(3, withCountdown.filter(a=>a.remaining>0).length)));
+  const upGrid = document.getElementById('upcoming-grid');
+  if (!upcoming.length){
+    upGrid.innerHTML = `<div class="card empty-state" style="grid-column:1/-1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <h4>Belum ada akun</h4><p>Tambahkan akun pertama untuk mulai memantau countdown bind</p>
+      <a href="akun.html?new=1" class="btn btn-primary btn-sm">Tambah Akun</a>
+    </div>`;
+  } else {
+    upGrid.innerHTML = upcoming.map(a => `
+      <div class="card acc-card">
+        <div class="acc-head">
+          <div class="game-icon">${N.GAME_INITIALS[a.game] || '?'}</div>
+          <div class="acc-title"><div class="game-name">${N.escapeHtml(a.game)}</div><div class="bind-type">${N.escapeHtml(a.bind)} · ${N.escapeHtml(a.nickname || '-')}</div></div>
+          ${N.ringSvg(a.remaining, a.durasiHari)}
+        </div>
+        <div class="acc-foot">
+          ${N.statusBadge(a.remaining)}
+          <a href="akun.html" class="btn btn-glass btn-sm">Detail</a>
+        </div>
+      </div>`).join('');
+  }
+
+  // Charts
+  const gameLabels = N.GAMES.filter(g => countByGame(g) > 0);
+  const gameData = gameLabels.map(countByGame);
+  if (chartGames) chartGames.destroy();
+  chartGames = new Chart(document.getElementById('chart-games'), {
+    type:'doughnut',
+    data:{ labels: gameLabels.length ? gameLabels : ['Belum ada data'], datasets:[{ data: gameData.length ? gameData : [1],
+      backgroundColor:['#7B5CFF','#3E8EFF','#00E5A0','#FFB84D','#FF8A4C','#FF5C7A','#A78BFF','#5CE3FF','#B84DFF','#4DFFB8'],
+      borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color:'#B9B4CC', font:{ size:11 }, boxWidth:10, padding:12 } } } }
+  });
+
+  const monthlyProfit = monthlyBuckets(tx, t => ['Penjualan','MC','Jasa Admin','Pemasukan'].includes(t.kategori) ? Number(t.nominal||0) : (['Pengeluaran','Pembelian'].includes(t.kategori) ? -Number(t.nominal||0) : 0));
+  if (chartProfit) chartProfit.destroy();
+  chartProfit = new Chart(document.getElementById('chart-profit'), {
+    type:'line',
+    data:{ labels: monthlyProfit.labels, datasets:[{ label:'Profit', data: monthlyProfit.values, borderColor:'#00E5A0',
+      backgroundColor:'rgba(0,229,160,0.12)', fill:true, tension:0.35, pointRadius:3, pointBackgroundColor:'#00E5A0' }] },
+    options: chartOpts()
+  });
+
+  const monthlySales = monthlyBuckets(tx, t => t.kategori === 'Penjualan' ? Number(t.nominal||0) : 0);
+  if (chartSales) chartSales.destroy();
+  chartSales = new Chart(document.getElementById('chart-sales'), {
+    type:'bar',
+    data:{ labels: monthlySales.labels, datasets:[{ label:'Penjualan', data: monthlySales.values, backgroundColor:'#7B5CFF', borderRadius:8, maxBarThickness:28 }] },
+    options: chartOpts()
+  });
+}
+
+function monthlyBuckets(tx, valueFn){
+  const now = new Date();
+  const labels = [], values = [];
+  for (let i = 5; i >= 0; i--){
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    labels.push(d.toLocaleDateString('id-ID', { month:'short' }));
+    const sum = tx.filter(t => {
+      if (!t.createdAt?.toDate) return false;
+      const td = t.createdAt.toDate();
+      return td.getFullYear() === d.getFullYear() && td.getMonth() === d.getMonth();
+    }).reduce((s,t) => s + valueFn(t), 0);
+    values.push(sum);
+  }
+  return { labels, values };
+}
+function chartOpts(){
+  return { responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false } },
+    scales:{ x:{ ticks:{ color:'#716C8A', font:{ size:10.5 } }, grid:{ color:'rgba(255,255,255,0.05)' } },
+             y:{ ticks:{ color:'#716C8A', font:{ size:10.5 } }, grid:{ color:'rgba(255,255,255,0.05)' } } } };
+}
+
+let latestAccounts = [], latestTx = [];
+document.addEventListener('ndraa:accounts', (e) => { latestAccounts = e.detail; renderStats(latestAccounts, latestTx); });
+document.addEventListener('ndraa:transactions', (e) => { latestTx = e.detail; renderStats(latestAccounts, latestTx); });
+</script>
 </body>
 </html>
