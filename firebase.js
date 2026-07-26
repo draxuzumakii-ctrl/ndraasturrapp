@@ -1,8 +1,44 @@
-// firebase.js — Konfigurasi Firebase
-// NDRAA STURR BIND MANAGER
-// Menggunakan Firebase v9 Compat SDK
+// ============================================================
+// NDRAA STURR BIND MANAGER — Firebase Configuration
+// ============================================================
+// This file initializes Firebase Auth + Firestore using the
+// modular Web SDK (v10) loaded via CDN in each HTML page.
+// Security is enforced through firestore.rules, NOT by hiding
+// this config — Firebase web API keys are not secret by design.
+// ============================================================
 
-// Konfigurasi Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updatePassword,
+  updateProfile,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  addDoc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+  writeBatch
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCzFNu3rM-pgIVxicaGyf23V7-SiBUWI-A",
   authDomain: "ndraapp-71d53.firebaseapp.com",
@@ -14,31 +50,38 @@ const firebaseConfig = {
   measurementId: "G-1XHEED7SWF"
 };
 
-// Inisialisasi Firebase (Compat SDK)
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Instance Firebase services
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// Aktifkan offline persistence
-db.enablePersistence({ synchronizeTabs: true })
-  .then(() => {
-    console.log('✅ Firestore offline persistence enabled');
-  })
-  .catch((err) => {
-    if (err.code === 'failed-precondition') {
-      console.warn('⚠️ Multiple tabs open, persistence can only be enabled in one tab at a time.');
-    } else if (err.code === 'unimplemented') {
-      console.warn('⚠️ Browser tidak mendukung offline persistence.');
-    }
-  });
-
-// Set bahasa Indonesia untuk Firebase Auth
-auth.useDeviceLanguage();
-
-// Ekspor instance ke window global (digunakan oleh script.js)
-window.auth = auth;
-window.db = db;
-
-console.log('🚀 Firebase initialized — NDRAA STURR BIND MANAGER');
+export {
+  app,
+  auth,
+  db,
+  // auth
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updatePassword,
+  updateProfile,
+  signOut,
+  // firestore
+  collection,
+  doc,
+  addDoc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+  writeBatch
+};
