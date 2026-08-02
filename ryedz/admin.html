@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin Panel — Ryedz.id</title>
+<meta name="theme-color" content="#05060f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="aurora"><span></span><span></span><span></span></div>
+<div class="grid-fx"></div>
+
+<!-- GATE: hanya Administrator -->
+<div id="gate" class="fixed inset-0 z-[300] grid place-items-center p-4">
+  <div class="glass p-8 max-w-sm w-full text-center neon-ring">
+    <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-4 text-[#06080f] text-xl" style="background:linear-gradient(135deg,#22d3ee,#a855f7)"><i class="fa-solid fa-shield-halved"></i></div>
+    <h1 class="text-xl font-extrabold">Administrator Login</h1>
+    <p class="text-xs text-[color:var(--muted)] mt-1 mb-5">Halaman ini hanya dapat diakses akun Administrator.</p>
+    <form id="gateForm" class="space-y-3 text-left">
+      <div><label class="lbl">Username Admin</label><input id="gUser" class="field" value="ryedz" required></div>
+      <div><label class="lbl">Password</label><input id="gPass" type="password" class="field" value="admin" required></div>
+      <div><label class="lbl">Kode 2FA (6 digit)</label><input id="g2fa" class="field font-mono tracking-[.4em]" value="123456" maxlength="6" required></div>
+      <label class="flex items-center gap-2 text-[11px] text-[color:var(--muted)]"><input type="checkbox" class="accent-cyan-400" checked> Saya bukan robot (CAPTCHA)</label>
+      <button class="btn btn-primary w-full !rounded-xl"><i class="fa-solid fa-right-to-bracket"></i> Masuk Dashboard</button>
+    </form>
+    <a href="beranda.html" class="btn btn-sm btn-ghost w-full mt-3"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+  </div>
+</div>
+
+<div id="panel" class="hide">
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed lg:sticky top-0 left-0 z-40 h-screen w-[262px] shrink-0 p-3 -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div class="glass h-full flex flex-col p-3">
+      <a href="beranda.html" class="flex items-center gap-2.5 px-2 py-2 mb-2">
+        <div class="w-9 h-9 rounded-xl grid place-items-center font-black text-[#06080f]" style="background:linear-gradient(135deg,#22d3ee,#a855f7)">R</div>
+        <div class="leading-none"><div class="font-extrabold">Ryedz<span class="neon-text">.id</span></div>
+          <div class="text-[10px] text-[color:var(--muted)] font-semibold">Admin Control Panel</div></div>
+      </a>
+      <div class="relative mb-2"><i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-xs text-[color:var(--muted)]"></i>
+        <input id="menuSearch" class="field !py-1.5 !pl-8 !text-xs" placeholder="Cari menu…"></div>
+      <nav id="sideNav" class="flex-1 overflow-y-auto pr-1 space-y-3"></nav>
+      <div class="pt-2 mt-2 border-t border-white/10 flex items-center gap-2">
+        <img id="admAva" class="w-8 h-8 rounded-full" alt="">
+        <div class="text-xs leading-tight"><div class="font-bold" id="admName">Ryedz</div>
+          <div class="text-[10px] text-[color:var(--muted)]">Founder · Admin</div></div>
+        <button class="btn btn-sm btn-ghost ml-auto" id="btnLogout" title="Keluar"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 min-w-0">
+    <header class="sticky top-0 z-30 p-3">
+      <div class="glass px-4 py-2.5 flex items-center gap-3">
+        <button id="sideToggle" class="lg:hidden btn btn-sm btn-ghost"><i class="fa-solid fa-bars"></i></button>
+        <div class="min-w-0">
+          <h1 class="font-extrabold text-sm sm:text-base truncate" id="pageTitle">Dashboard</h1>
+          <p class="text-[11px] text-[color:var(--muted)] truncate" id="pageSub">Ringkasan performa Ryedz.id</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <span class="hidden md:flex items-center gap-1.5 text-[11px] font-bold text-emerald-300 px-2.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sistem Normal</span>
+          <button class="btn btn-sm btn-ghost relative" id="admNotif"><i class="fa-solid fa-bell"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-pink-500 text-[9px] grid place-items-center font-bold">4</span></button>
+          <a class="btn btn-sm" href="beranda.html"><i class="fa-solid fa-globe"></i><span class="hidden sm:inline"> Lihat Situs</span></a>
+        </div>
+      </div>
+    </header>
+    <main id="view" class="p-3 pb-16 space-y-4"></main>
+  </div>
+</div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

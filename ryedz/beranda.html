@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ryedz.id — Tempat Berbagi Prompt AI Terbaik</title>
+<meta name="description" content="Ryedz.id membantu semua orang menemukan prompt terbaik untuk ChatGPT, DeepSeek, Gemini, Claude, Grok, Perplexity, Midjourney, dan AI lainnya.">
+<meta name="theme-color" content="#05060f">
+<meta property="og:title" content="Ryedz.id — Ryedz Pengen Famous">
+<meta property="og:description" content="Marketplace prompt AI terbaik berbahasa Indonesia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Plus Jakarta Sans','sans-serif']}}}}</script>
+</head>
+<body>
+
+<div class="aurora"><span></span><span></span><span></span></div>
+<div class="grid-fx"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4">
+    <div class="mt-3 glass px-4 py-2.5 flex items-center gap-3">
+      <a href="#beranda" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-xl grid place-items-center font-black text-[#06080f] neon-ring" style="background:linear-gradient(135deg,#22d3ee,#a855f7)">R</div>
+        <div class="leading-none">
+          <div class="font-extrabold tracking-tight">Ryedz<span class="neon-text">.id</span></div>
+          <div class="text-[10px] text-[color:var(--muted)] font-semibold">Ryedz Pengen Famous</div>
+        </div>
+      </a>
+
+      <ul class="hidden xl:flex items-center gap-1 ml-4 text-[13px] font-semibold" id="navLinks">
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#beranda">Beranda</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#kategori">Kategori</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#trending">Trending</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#terbaru">Prompt Terbaru</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#upload">Upload Prompt</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#leaderboard">Leaderboard</a></li>
+        <li><a class="nav-a px-3 py-2 rounded-lg hover:bg-white/5 transition" href="#tentang">Tentang</a></li>
+      </ul>
+
+      <div class="ml-auto flex items-center gap-2" id="authArea"></div>
+
+      <button id="burger" class="xl:hidden btn btn-ghost !px-3" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div id="mobileMenu" class="xl:hidden hide mt-2 glass p-3 grid grid-cols-2 gap-2 text-sm font-semibold">
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#beranda">Beranda</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#kategori">Kategori</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#trending">Trending</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#terbaru">Prompt Terbaru</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#upload">Upload Prompt</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#leaderboard">Leaderboard</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="#tentang">Tentang</a>
+      <a class="px-3 py-2 rounded-lg hover:bg-white/5" href="admin.html">Admin Panel</a>
+    </div>
+  </nav>
+</header>
+
+<main class="pt-28">
+
+<!-- ================= HERO ================= -->
+<section id="beranda" class="max-w-7xl mx-auto px-4 pt-6 pb-16">
+  <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-center">
+    <div class="reveal">
+      <span class="badge b-level mb-4"><i class="fa-solid fa-bolt"></i> Platform Prompt AI #1 Indonesia</span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
+        Tempat Berbagi <span class="neon-text">Prompt AI</span> Terbaik
+      </h1>
+      <p class="mt-5 text-[color:var(--muted)] text-base sm:text-lg max-w-2xl leading-relaxed">
+        Ryedz.id membantu semua orang menemukan prompt terbaik untuk ChatGPT, DeepSeek, Gemini, Claude,
+        Grok, Perplexity, Midjourney, dan AI lainnya.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="#jelajah" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Jelajahi Prompt</a>
+        <a href="#upload" class="btn"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Prompt</a>
+      </div>
+      <div class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+        <div class="glass p-3 text-center"><div class="text-xl font-extrabold neon-text" data-count="24800">0</div><div class="text-[11px] text-[color:var(--muted)] font-semibold">Prompt</div></div>
+        <div class="glass p-3 text-center"><div class="text-xl font-extrabold neon-text" data-count="128400">0</div><div class="text-[11px] text-[color:var(--muted)] font-semibold">Pengguna</div></div>
+        <div class="glass p-3 text-center"><div class="text-xl font-extrabold neon-text" data-count="4820000">0</div><div class="text-[11px] text-[color:var(--muted)] font-semibold">Total View</div></div>
+        <div class="glass p-3 text-center"><div class="text-xl font-extrabold neon-text" data-count="912000">0</div><div class="text-[11px] text-[color:var(--muted)] font-semibold">Disalin</div></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="glass p-5 neon-ring relative overflow-hidden">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+          <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          <span class="ml-2 text-xs text-[color:var(--muted)] font-mono">prompt-of-the-day.txt</span>
+        </div>
+        <pre class="code text-[12.5px]" id="heroCode"></pre>
+        <div class="mt-4 flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=ryedz&backgroundColor=312e81" class="w-9 h-9 rounded-full ring-1 ring-white/15" alt="Ryedz">
+          <div class="text-sm">
+            <div class="font-bold flex items-center gap-1.5">Ryedz <span class="badge b-verified"><i class="fa-solid fa-circle-check"></i></span> <span class="badge b-founder"><i class="fa-solid fa-gem"></i></span></div>
+            <div class="text-[11px] text-[color:var(--muted)]">Founder · Lv.8 AI Legend</div>
+          </div>
+          <button class="btn btn-sm btn-primary ml-auto" id="heroCopy"><i class="fa-solid fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KATEGORI ================= -->
+<section id="kategori" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="flex items-end justify-between gap-4 mb-6 reveal">
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Jelajahi <span class="neon-text">Kategori</span></h2>
+      <p class="text-[color:var(--muted)] text-sm mt-1">Pilih model AI atau bidang yang kamu butuhkan.</p>
+    </div>
+    <button class="btn btn-sm hidden sm:inline-flex" id="clearCat"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+  </div>
+  <div id="catGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+</section>
+
+<!-- ================= JELAJAH / SEARCH ================= -->
+<section id="jelajah" class="max-w-7xl mx-auto px-4 py-10">
+  <div class="glass p-4 sm:p-5 reveal">
+    <div class="flex flex-col lg:flex-row gap-3">
+      <div class="relative flex-1">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[color:var(--muted)]"></i>
+        <input id="searchInput" class="field !pl-11" placeholder="Cari prompt, tag, atau model AI… (mis. 'seo', 'cinematic', 'code review')">
+      </div>
+      <div class="flex gap-2">
+        <select id="filterAi" class="field !w-auto min-w-[150px]"><option value="">Semua AI Model</option></select>
+        <select id="filterCat" class="field !w-auto min-w-[150px]"><option value="">Semua Kategori</option></select>
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2" id="sortChips">
+      <button class="chip active" data-sort="terbaru"><i class="fa-solid fa-clock"></i> Terbaru</button>
+      <button class="chip" data-sort="populer"><i class="fa-solid fa-fire-flame-curved"></i> Populer</button>
+      <button class="chip" data-sort="trending"><i class="fa-solid fa-arrow-trend-up"></i> Trending</button>
+      <button class="chip" data-sort="copy"><i class="fa-solid fa-copy"></i> Banyak Disalin</button>
+      <button class="chip" data-sort="like"><i class="fa-solid fa-heart"></i> Banyak Like</button>
+      <button class="chip" data-sort="rating"><i class="fa-solid fa-star"></i> Rating Tertinggi</button>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between mt-8 mb-4">
+    <h3 class="text-lg font-extrabold" id="resultTitle">Semua Prompt</h3>
+    <span class="text-xs text-[color:var(--muted)] font-semibold" id="resultCount"></span>
+  </div>
+  <div id="promptGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- ================= TRENDING ================= -->
+<section id="trending" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="mb-6 reveal">
+    <h2 class="text-2xl sm:text-3xl font-extrabold"><i class="fa-solid fa-fire text-orange-400"></i> Sedang <span class="neon-text">Trending</span></h2>
+    <p class="text-[color:var(--muted)] text-sm mt-1">Prompt paling banyak disalin & disukai minggu ini.</p>
+  </div>
+  <div id="trendGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- ================= TERBARU ================= -->
+<section id="terbaru" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="mb-6 reveal">
+    <h2 class="text-2xl sm:text-3xl font-extrabold"><i class="fa-solid fa-sparkles text-cyan-300"></i> Prompt <span class="neon-text">Terbaru</span></h2>
+  </div>
+  <div id="newGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- ================= UPLOAD ================= -->
+<section id="upload" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="glass p-6 sm:p-8 reveal">
+    <div class="flex flex-wrap items-center gap-3 mb-6">
+      <div class="w-11 h-11 rounded-2xl grid place-items-center text-[#06080f]" style="background:linear-gradient(135deg,#22d3ee,#a855f7)"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div>
+        <h2 class="text-2xl font-extrabold">Upload Prompt</h2>
+        <p class="text-[color:var(--muted)] text-sm">Bagikan prompt terbaikmu. Semua unggahan melewati review admin.</p>
+      </div>
+      <div class="ml-auto" id="uploadStatusBox"></div>
+    </div>
+
+    <form id="uploadForm" class="grid md:grid-cols-2 gap-4">
+      <div class="md:col-span-2"><label class="lbl">Judul Prompt *</label><input name="title" class="field" placeholder="mis. Ultimate Content Writer GPT" required></div>
+      <div><label class="lbl">Thumbnail (URL / Upload)</label><input name="thumb" class="field" type="file" accept="image/*"></div>
+      <div><label class="lbl">Screenshot Hasil (opsional)</label><input name="shot" class="field" type="file" accept="image/*"></div>
+      <div class="md:col-span-2"><label class="lbl">Isi Prompt *</label><textarea name="body" rows="8" class="field font-mono !text-[13px]" placeholder="Tulis prompt lengkap di sini…" required></textarea></div>
+      <div class="md:col-span-2"><label class="lbl">Deskripsi Singkat *</label><textarea name="desc" rows="3" class="field" placeholder="Jelaskan kegunaan prompt ini…" required></textarea></div>
+      <div><label class="lbl">Kategori *</label><select name="category" class="field" id="upCat" required></select></div>
+      <div><label class="lbl">AI Model *</label><select name="ai" class="field" id="upAi" required></select></div>
+      <div class="md:col-span-2"><label class="lbl">Tag (pisahkan dengan koma)</label><input name="tags" class="field" placeholder="seo, artikel, copywriting"></div>
+      <div class="md:col-span-2 flex flex-wrap items-center gap-3 pt-2">
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Kirim untuk Review</button>
+        <button class="btn btn-ghost" type="reset"><i class="fa-solid fa-eraser"></i> Bersihkan</button>
+        <span class="text-xs text-[color:var(--muted)]">Dengan mengunggah, kamu menyetujui <a href="#peraturan" class="underline hover:text-white">Peraturan Ryedz.id</a>.</span>
+      </div>
+    </form>
+
+    <div class="mt-8 grid sm:grid-cols-3 gap-3">
+      <div class="glass p-4"><span class="pill p-wait">Menunggu Review Admin</span><p class="text-xs text-[color:var(--muted)] mt-2">Prompt masuk antrean moderasi maksimal 1×24 jam.</p></div>
+      <div class="glass p-4"><span class="pill p-ok">Disetujui</span><p class="text-xs text-[color:var(--muted)] mt-2">Prompt tampil publik dan mulai menghasilkan reputasi.</p></div>
+      <div class="glass p-4"><span class="pill p-bad">Ditolak</span><p class="text-xs text-[color:var(--muted)] mt-2">Alasan penolakan dikirim ke notifikasi akunmu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEADERBOARD ================= -->
+<section id="leaderboard" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="mb-6 reveal">
+    <h2 class="text-2xl sm:text-3xl font-extrabold"><i class="fa-solid fa-trophy text-amber-300"></i> <span class="neon-text">Leaderboard</span> Kreator</h2>
+    <p class="text-[color:var(--muted)] text-sm mt-1">Peringkat berdasarkan Reputation Point, level, dan kontribusi.</p>
+  </div>
+  <div class="glass overflow-hidden reveal">
+    <div class="overflow-x-auto"><table class="tbl min-w-[760px]">
+      <thead><tr><th>#</th><th>Kreator</th><th>Level</th><th>Reputasi</th><th>Prompt</th><th>View</th><th>Like</th><th>Copy</th></tr></thead>
+      <tbody id="lbBody"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ================= PERATURAN ================= -->
+<section id="peraturan" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="glass p-6 reveal">
+      <h3 class="text-xl font-extrabold mb-3"><i class="fa-solid fa-scale-balanced text-cyan-300"></i> Peraturan Komunitas</h3>
+      <p class="text-sm text-[color:var(--muted)] mb-4">Pelanggaran berikut akan ditindak oleh tim moderasi:</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="chip">Spam</span><span class="chip">Prompt berbahaya</span><span class="chip">Konten ilegal</span>
+        <span class="chip">Penipuan</span><span class="chip">Pornografi</span><span class="chip">Malware</span>
+        <span class="chip">Virus</span><span class="chip">Link phishing</span><span class="chip">Ujaran kebencian</span>
+        <span class="chip">Plagiarisme berulang</span>
+      </div>
+    </div>
+    <div class="glass p-6 reveal">
+      <h3 class="text-xl font-extrabold mb-3"><i class="fa-solid fa-gavel text-red-400"></i> Sanksi</h3>
+      <ul class="space-y-2 text-sm">
+        <li class="flex gap-3 items-start"><span class="pill p-wait mt-.5">Peringatan</span><span class="text-[color:var(--muted)]">Notifikasi resmi + pengurangan reputasi.</span></li>
+        <li class="flex gap-3 items-start"><span class="pill p-info">Suspend</span><span class="text-[color:var(--muted)]">Akun dibekukan sementara 1–30 hari.</span></li>
+        <li class="flex gap-3 items-start"><span class="pill p-bad">Hapus Prompt</span><span class="text-[color:var(--muted)]">Konten dihapus permanen dari platform.</span></li>
+        <li class="flex gap-3 items-start"><span class="pill p-bad">Ban Permanen</span><span class="text-[color:var(--muted)]">Akun tidak bisa login & semua prompt disembunyikan.</span></li>
+      </ul>
+      <div class="mt-4 p-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-200 text-xs">
+        “Akun Anda telah diblokir permanen karena melanggar kebijakan Ryedz.id.”
+      </div>
+      <button class="btn btn-sm btn-danger mt-4" id="demoBan"><i class="fa-solid fa-eye"></i> Lihat contoh pesan ban</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BADGE & LEVEL ================= -->
+<section id="tentang" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="mb-6 reveal">
+    <h2 class="text-2xl sm:text-3xl font-extrabold">Sistem <span class="neon-text">Badge, Level & Reputasi</span></h2>
+    <p class="text-[color:var(--muted)] text-sm mt-1">Badge tampil di profil, komentar, card prompt, detail prompt, leaderboard, dan hasil pencarian.</p>
+  </div>
+  <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-5">
+    <div class="glass p-6 reveal"><h3 class="font-extrabold mb-4">Jenis Badge</h3><div id="badgeList" class="grid sm:grid-cols-2 gap-3"></div></div>
+    <div class="space-y-5">
+      <div class="glass p-6 reveal"><h3 class="font-extrabold mb-4">Level Pengguna</h3><div id="levelList" class="space-y-2"></div></div>
+      <div class="glass p-6 reveal">
+        <h3 class="font-extrabold mb-3">Reputation Point</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div><div class="text-emerald-300 font-bold mb-2 text-xs uppercase tracking-wide">Bertambah</div>
+            <ul class="space-y-1 text-[color:var(--muted)] text-[13px]">
+              <li>+ Upload prompt disetujui</li><li>+ Prompt banyak dilihat</li><li>+ Prompt banyak disalin</li><li>+ Mendapat like</li><li>+ Rating tinggi</li></ul></div>
+          <div><div class="text-red-300 font-bold mb-2 text-xs uppercase tracking-wide">Berkurang</div>
+            <ul class="space-y-1 text-[color:var(--muted)] text-[13px]">
+              <li>− Prompt ditolak</li><li>− Spam</li><li>− Dilaporkan</li><li>− Melanggar aturan</li><li>− Konten berbahaya</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="mt-10 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <div class="w-9 h-9 rounded-xl grid place-items-center font-black text-[#06080f]" style="background:linear-gradient(135deg,#22d3ee,#a855f7)">R</div>
+        <div><div class="font-extrabold">Ryedz<span class="neon-text">.id</span></div><div class="text-[10px] text-[color:var(--muted)] font-semibold">Ryedz Pengen Famous</div></div>
+      </div>
+      <p class="text-sm text-[color:var(--muted)]">Platform berbagi prompt AI terbaik berbahasa Indonesia.</p>
+      <div class="flex gap-2 mt-4">
+        <a class="btn btn-sm btn-ghost" href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a class="btn btn-sm btn-ghost" href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a class="btn btn-sm btn-ghost" href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+      </div>
+    </div>
+    <div><h4 class="font-bold mb-3 text-sm">Jelajah</h4><ul class="space-y-2 text-sm text-[color:var(--muted)]">
+      <li><a href="#kategori" class="hover:text-white">Kategori</a></li><li><a href="#trending" class="hover:text-white">Trending</a></li>
+      <li><a href="#terbaru" class="hover:text-white">Prompt Terbaru</a></li><li><a href="#leaderboard" class="hover:text-white">Leaderboard</a></li></ul></div>
+    <div><h4 class="font-bold mb-3 text-sm">Komunitas</h4><ul class="space-y-2 text-sm text-[color:var(--muted)]">
+      <li><a href="#upload" class="hover:text-white">Upload Prompt</a></li><li><a href="#peraturan" class="hover:text-white">Peraturan</a></li>
+      <li><a href="#tentang" class="hover:text-white">Badge & Level</a></li><li><a href="admin.html" class="hover:text-white">Admin Panel</a></li></ul></div>
+    <div><h4 class="font-bold mb-3 text-sm">Newsletter</h4>
+      <p class="text-sm text-[color:var(--muted)] mb-3">Dapatkan prompt pilihan tiap minggu.</p>
+      <form class="flex gap-2" onsubmit="event.preventDefault();Ryedz.toast('Terima kasih! Kamu berlangganan newsletter.','ok');this.reset()">
+        <input class="field" type="email" placeholder="email@kamu.com" required><button class="btn btn-primary !px-4"><i class="fa-solid fa-paper-plane"></i></button>
+      </form></div>
+  </div>
+  <div class="border-t border-white/10 py-5 text-center text-xs text-[color:var(--muted)]">
+    © 2026 Ryedz.id — Dibuat dengan <i class="fa-solid fa-heart text-pink-400"></i> untuk komunitas AI Indonesia.
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
